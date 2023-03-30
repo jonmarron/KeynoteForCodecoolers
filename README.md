@@ -4,11 +4,9 @@ This is an Open Source Tool for Codecoolers to create a Web based Presentation f
 
 ## Dev Resources:
 
-[Figma] (https://miro.com/app/board/uXjVMZjaH9w=/?moveToWidget=3458764550213398368&cot=14)
+[Figma](https://miro.com/app/board/uXjVMZjaH9w=/?moveToWidget=3458764550213398368&cot=14 "Design")
 
-[Kanban Miro] (https://miro.com/app/board/uXjVMZjaH9w=/)
-
-[React Docs] (https://react.dev/)
+[Kanban Miro](https://miro.com/app/board/uXjVMZjaH9w=/ "Kanban Board To Assign Tasks")
 
 ## Docs
 
