@@ -1,16 +1,16 @@
-#React Keynote Template
+# React Keynote Template
 
 This is an Open Source Tool for Codecoolers to create a Web based Presentation for Demo day.
 
-##Dev Resources:
+## Dev Resources:
 
-[Figma](https://miro.com/app/board/uXjVMZjaH9w=/?moveToWidget=3458764550213398368&cot=14)
+[Figma] (https://miro.com/app/board/uXjVMZjaH9w=/?moveToWidget=3458764550213398368&cot=14)
 
-[Kanban Miro](https://miro.com/app/board/uXjVMZjaH9w=/)
+[Kanban Miro] (https://miro.com/app/board/uXjVMZjaH9w=/)
 
 [React Docs] (https://react.dev/)
 
-##Docs
+## Docs
 
 `cd /client
 npm run dev`
