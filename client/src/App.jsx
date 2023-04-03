@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import {Link, Route, Routes} from 'react-router-dom'
 import './App.css'
+import {Slides} from './Pages/Slides'
+import {Form} from './Pages/Form'
 
 
 function App() {
@@ -19,8 +21,8 @@ function App() {
         </nav>
       </div>
       <Routes>
-        <Route path='/'/>
-        <Route path='/load'/>
+        <Route path='/' element={<Form/>}/>
+        <Route path='/load' element={<Slides/>}/>
       </Routes>
     </>
   )
