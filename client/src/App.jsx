@@ -4,7 +4,6 @@ import './App.css'
 import Slides from './Pages/Slides'
 import Form from './Pages/Form'
 
-
 function App() {
 
   return (
