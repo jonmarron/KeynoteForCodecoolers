@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import '../Forms.css'
-import ActionsForm from '../Components/formComps/ActionsForm'
-import FormsCollection from '../Components/formComps/FormsCollection'
+import ActionsForm from '../../Components/formComps/ActionsFormForm'
+import FormsCollection from '../src/Components/formComps/FormsCollection'
 
 const Form = () => {
 
