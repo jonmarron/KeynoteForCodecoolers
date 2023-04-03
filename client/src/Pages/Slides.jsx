@@ -34,8 +34,8 @@ const Slides = () => {
 
   return (
     <div>
-      <select onChange={handleOnChange}>
-        <option >Select a slide</option>
+      <select className='slideSelector' onChange={handleOnChange}>
+        <option disabled>Select a slide</option>
         <option >Title Slide</option>
         <option >Copy Image</option>
         <option >Headline Copy</option>

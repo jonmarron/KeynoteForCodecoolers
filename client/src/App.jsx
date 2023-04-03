@@ -13,7 +13,7 @@ function App() {
         <div className="logo">
           <h2>KeynoteTemplate</h2>
         </div>
-        <nav className='navOptions'>
+        <nav>
           <ul>
             <li><Link to="/">Create</Link></li>
             <li><Link to="/load">Load</Link></li>

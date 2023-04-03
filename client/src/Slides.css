@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slideSelector {
+    position: absolute;
+    top: 90px;
+    right: 30px;
+}
+
+.h1-headline {
+    font-size: 5rem;
+    color: black;
+    text-transform: uppercase;
+}
+
+.h2-headline {
+    font-size: 2.5rem;
+    color: black;
+    text-transform: uppercase;
+}
+
+.copy-plus-image {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.copy-plus-image p {
+    width: 50%;
+    height: 200px;
+    margin-left: 10px;
+    text-align: left;
+    border: solid black 2px;
+}
+
+.copy-plus-image img {
+    width: 50%;
+    height: 200px;
+    margin-right: 10px;
+    background-color: rgb(124, 124, 124);
+    border: solid black 2px;
+}
+
+.headline-copy-p {
+    width: 50vw;
+    margin: 10px;
+    border: solid black 2px;
+}
+
+.two-columns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.columns{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 200px;
+    margin-right: 10px;
+    border: solid black 2px;
+}
+
+.columns img {
+    width: 100%;
+    height: 100%;
+    background-color :rgb(124, 124, 124);
+}
+
+.columns p {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
