@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const ActionsForm = ({isFirstSlide, setIsFirstSlide, neededForms, setNeededForms}) => {
+const ActionsForm = ({formTypes, isFirstSlide, setIsFirstSlide, neededForms, setNeededForms}) => {
 
   const [newSlideType, setNewSlideType] = useState('')
 
@@ -28,7 +28,9 @@ const ActionsForm = ({isFirstSlide, setIsFirstSlide, neededForms, setNeededForms
           <form className="input-w-button" onSubmit={handleNewSlide}>
             <select name="form-type" id="" onChange={handleSelectChange}>
               <option value="">Choose slide type...</option>
-              <option value="title">Title Slide</option>
+              {formTypes.map((type, index) => {
+                return <option key={index} value={type}>{type}</option>
+              })}
             </select>
             <button type='submit'>Start</button>
           </form>
@@ -38,10 +40,12 @@ const ActionsForm = ({isFirstSlide, setIsFirstSlide, neededForms, setNeededForms
           <div className="add-slide">
             <h3>Add another slide...</h3>
             <form className="input-w-button" onSubmit={handleNewSlide}>
-              <select name="form-type" id="" onChange={handleSelectChange}>
-                <option value="">Choose slide type...</option>
-                <option value="title">Title Slide</option>
-              </select>
+            <select name="form-type" id="" onChange={handleSelectChange}>
+              <option value="">Choose slide type...</option>
+              {formTypes.map((type, index) => {
+                return <option key={index} value={type}>{type}</option>
+              })}
+            </select>
               <button type='submit'>Add!</button>
             </form>
           </div>
