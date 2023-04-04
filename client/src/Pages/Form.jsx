@@ -4,7 +4,8 @@ import ActionsForm from '../Components/formComps/ActionsForm'
 import FormsCollection from '../Components/formComps/FormsCollection'
 
 const Form = () => {
-  
+  const bottomRef = useRef(null);
+
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [presObject, setPresObject] = useState([])
   const [neededForms, setNeededForms] = useState([])
@@ -21,6 +22,10 @@ const Form = () => {
   useEffect(() => {
     getFormTypes();
   }, [])
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({behavior: 'smooth'});
+  }, [neededForms])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -43,17 +48,35 @@ const Form = () => {
     <div className="formContainer">
       {
         neededForms.map((form, index) => {
+          if (index === neededForms.length -1) {
+            return (
+              <div ref={bottomRef} key={index}
+              >
+                <FormsCollection
+                  key={index}
+                  index={index}
+                  formType={form.type}
+                  presObject={presObject} 
+                  setPresObject={setPresObject}
+                  isFirstSlide={isFirstSlide}
+                  slides={slides}
+                  setSlides={setSlides}
+                />
+  
+              </div>
+            )
+          }
           return (
-            <FormsCollection
-              key={index}
-              index={index}
-              formType={form.type}
-              presObject={presObject} 
-              setPresObject={setPresObject}
-              isFirstSlide={isFirstSlide}
-              slides={slides}
-              setSlides={setSlides}
-            />
+              <FormsCollection
+                key={index}
+                index={index}
+                formType={form.type}
+                presObject={presObject} 
+                setPresObject={setPresObject}
+                isFirstSlide={isFirstSlide}
+                slides={slides}
+                setSlides={setSlides}
+              />
           )
         })
       }
