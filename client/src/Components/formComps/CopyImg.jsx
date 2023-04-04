@@ -13,7 +13,7 @@ const CopyImg = ({slides, setSlides, index}) => {
     setSlides([
         ... slides,
         {
-          sectionType: 'title-slide',
+          sectionType: 'copy+img',
           copy1: copyText,
           imgURL1: imgURL
         }
@@ -21,7 +21,6 @@ const CopyImg = ({slides, setSlides, index}) => {
     )
   }
   
-
   return (
     <div className="slideform" id={index}>
       <h2>Copy + Img</h2>

@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import '../Forms.css'
 import ActionsForm from '../Components/formComps/ActionsForm'
 import FormsCollection from '../Components/formComps/FormsCollection'
 
 const Form = () => {
-
+  
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [presObject, setPresObject] = useState([])
   const [neededForms, setNeededForms] = useState([])
@@ -24,6 +24,7 @@ const Form = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(slides);
     try {
       const data = { presentationName, slides }
       const res = await fetch('http://localhost:8989/api/keynotetemplates', {
