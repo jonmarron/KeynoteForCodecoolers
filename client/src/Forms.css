@@ -20,6 +20,12 @@
   margin: 20px 0;
 }
 
+.two-columns-form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;;
+}
+
 .input-w-button button{
   margin: 0 20px
 }

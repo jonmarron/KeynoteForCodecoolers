@@ -1,15 +1,15 @@
 import React from 'react'
 
-const CopyImg = () => {
+const HeadlineCopy = () => {
   return (
     <div className="slideform">
-      <h2>Copy + Img</h2>
+      <h2>Headline with text</h2>
       <div className="slide-content two-columns-form">
+        <input type="text" name="Title" id="" placeholder='Write your Headline here ...' />
         <textarea name="" id="" cols="30" rows="10" placeholder='Add your copy text here ...'></textarea>
-        <input type="text" name="imgURL" id="" placeholder='Add your image URL here' />
       </div>
-      <button>Create!</button>
-    </div>  )
+    </div>
+  )
 }
 
-export default CopyImg
+export default HeadlineCopy

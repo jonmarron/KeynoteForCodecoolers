@@ -19,7 +19,6 @@ const Form = () => {
   useEffect(() => {
     getFormTypes();
   }, [])
-  
 
   return (
     <div className="formContainer">
