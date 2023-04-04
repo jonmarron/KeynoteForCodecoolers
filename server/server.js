@@ -20,9 +20,11 @@ app.get('/api/formtypes', (req, res) => {
 
 app.post('/api/keynotetemplates', (req, res) => {
   try {
-    const name = req.body.name;
+    const name = req.body.presentationName;
     const date = new Date();
     const slides = req.body.slides;
+    console.log(slides);
+    console.log(name);
     const keynoteTemplate = new KeynoteTemplate({
       name,
       date,

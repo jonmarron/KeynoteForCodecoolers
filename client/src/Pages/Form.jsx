@@ -32,7 +32,7 @@ const Form = () => {
         body: JSON.stringify(data)
       })
       const keynoteTemplate = await res.json();
-      console.log(resData);
+      // console.log(resData);
     }
     catch (err) {
       console.error(err.message);
@@ -46,10 +46,13 @@ const Form = () => {
           return (
             <FormsCollection
               key={index}
+              index={index}
               formType={form.type}
               presObject={presObject} 
               setPresObject={setPresObject}
               isFirstSlide={isFirstSlide}
+              slides={slides}
+              setSlides={setSlides}
             />
           )
         })

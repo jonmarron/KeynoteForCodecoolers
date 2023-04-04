@@ -5,31 +5,51 @@ import HeadlineCopy from './HeadlineCopy'
 import TwoColumnsForm from './TwoColumnsForm'
 import IframeFullScreenForm from './IframeFullScreenForm'
 
-const FormsCollection = ({formType, presObject, setPresObject, isFirstSlide}) => {
+const FormsCollection = ({formType, presObject, setPresObject, isFirstSlide, slides, setSlides, index}) => {
   if(!isFirstSlide){
     if (formType === 'title-slide'){
       return (
-        <TitleSlideForm/>
+        <TitleSlideForm
+          index={index}
+          slides={slides}
+          setSlides={setSlides}
+        />
       )
     }
     if (formType === 'copy+img'){
       return (
-        <CopyImg/>
+        <CopyImg
+          index={index}
+          slides={slides}
+          setSlides={setSlides}
+        />
       )
     }
     if (formType === 'HeadlineCopy'){
       return (
-        <HeadlineCopy/>
+        <HeadlineCopy
+          index={index}
+          slides={slides}
+          setSlides={setSlides}
+        />
       )
     }
     if (formType === '2Columns'){
       return (
-        <TwoColumnsForm/>
+        <TwoColumnsForm
+          index={index}
+          slides={slides}
+          setSlides={setSlides}
+        />
       )
     }
     if (formType === 'iframe'){
       return (
-        <IframeFullScreenForm/>
+        <IframeFullScreenForm
+          index={index}
+          slides={slides}
+          setSlides={setSlides}
+        />
       )
     }
   }
