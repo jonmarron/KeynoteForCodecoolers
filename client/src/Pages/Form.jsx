@@ -32,7 +32,6 @@ const Form = () => {
         body: JSON.stringify(data)
       })
       const keynoteTemplate = await res.json();
-      // console.log(resData);
     }
     catch (err) {
       console.error(err.message);

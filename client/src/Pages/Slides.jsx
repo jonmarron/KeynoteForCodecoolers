@@ -19,11 +19,14 @@ const Slides = () => {
   const getSavedSlides = async () => {
     const response = await fetch('http://localhost:8989/api/keynotetemplates')
     const data = await response.json()
+    console.log("test")
+    console.log(data)
     setSavedSlides(data)
   }
 
   useEffect(() => {
     getSavedSlides()
+    console.log(savedSlides)
   }, [])
 
   const renderSlide = () => {

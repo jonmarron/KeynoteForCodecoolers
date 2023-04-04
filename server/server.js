@@ -38,13 +38,15 @@ app.post('/api/keynotetemplates', (req, res) => {
   }
 })
 
-app.get('/api/keynotetemplates', (req, res) => {
-  KeynoteTemplate.find({}, (err, keynoteTemplates) => {
-    if (err) {
-      console.log(err);
-    }
-    res.json(keynoteTemplates);
-  });
+app.get('/api/keynotetemplates',async (req, res) => {
+  try {
+    const keynoteTemplates = await KeynoteTemplate.find({});
+    console.log(keynoteTemplates);
+    res.status(200).json(keynoteTemplates);
+  }
+  catch (err) {
+    console.log(err);
+  }
 })
 
 app.listen(PORT, () => console.log(`App ist listening on http://localhost:${PORT}`))
