@@ -40,7 +40,7 @@ button {
   transition: border-color 0.25s;
 }
 
-select, input {
+select, input, textarea {
   font-family: 'Poppins', sans-serif;
   border-radius: 8px;
   border: 1px solid #2b2b2b;
@@ -49,6 +49,7 @@ select, input {
   font-size: 1em;
   font-size: 1em;
   font-weight: 500;
+  margin: 10px;
 }
 
 button:hover {

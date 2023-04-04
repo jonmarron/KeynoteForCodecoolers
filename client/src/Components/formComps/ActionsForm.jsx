@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const ActionsForm = ({formTypes, isFirstSlide, setIsFirstSlide, neededForms, setNeededForms}) => {
+const ActionsForm = ({formTypes, isFirstSlide, setIsFirstSlide, neededForms, setNeededForms, handleSubmit, presentationName, setPresentationName}) => {
 
   const [newSlideType, setNewSlideType] = useState('')
 
@@ -10,6 +10,7 @@ const ActionsForm = ({formTypes, isFirstSlide, setIsFirstSlide, neededForms, set
 
   const handleNewSlide = (e) =>  {
     e.preventDefault();
+    console.log(neededForms)
     setNeededForms([
       ...neededForms,
       {
@@ -51,10 +52,10 @@ const ActionsForm = ({formTypes, isFirstSlide, setIsFirstSlide, neededForms, set
           </div>
           <div className="save-keynote">
             <h3>... or save the presentation</h3>
-            <div className="input-w-button">
-              <input type="text" name="presentationname" id="" placeholder='Name your presentation' />
-              <button>Save!</button>
-            </div>
+            <form className="input-w-button" onSubmit={handleSubmit}>
+              <input type="text" value={presentationName} name="presentationname" id="" placeholder='Name your presentation' onChange={e => setPresentationName(e.target.value)}/>
+              <button type='submit'>Save!</button>
+            </form>
           </div>
         </>
       )}

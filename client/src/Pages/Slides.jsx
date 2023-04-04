@@ -4,7 +4,7 @@ import CopyImage from '../Components/CopyImage'
 import Headlinecopy from '../Components/HeadlineCopy'
 import TwoColumns from '../Components/TwoColumns'
 import IframeFullscreen from '../Components/IframeFullscreen'
-import '/src/Slides.css'
+import '../Slides.css'
 
 const Slides = () => {
   const [selectedSlide, setSelectedSlide] = useState(null)
