@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TitleSlide from '../Components/TitleSlide'
 import CopyImage from '../Components/CopyImage'
 import Headlinecopy from '../Components/HeadlineCopy'
@@ -8,12 +8,23 @@ import '../Slides.css'
 
 const Slides = () => {
   const [selectedSlide, setSelectedSlide] = useState(null)
+  const [savedSlides, setSavedSlides] = useState([])
 
   const handleOnChange = (e) => {
     const selectedIndex = e.target.selectedIndex
     const selectedSlide = e.target[selectedIndex].text
     setSelectedSlide(selectedSlide)
   }
+
+  const getSavedSlides = async () => {
+    const response = await fetch('http://localhost:8989/api/keynotetemplates')
+    const data = await response.json()
+    setSavedSlides(data)
+  }
+
+  useEffect(() => {
+    getSavedSlides()
+  }, [])
 
   const renderSlide = () => {
     switch (selectedSlide) {

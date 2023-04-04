@@ -36,4 +36,13 @@ app.post('/api/keynotetemplates', (req, res) => {
   }
 })
 
+app.get('/api/keynotetemplates', (req, res) => {
+  KeynoteTemplate.find({}, (err, keynoteTemplates) => {
+    if (err) {
+      console.log(err);
+    }
+    res.json(keynoteTemplates);
+  });
+})
+
 app.listen(PORT, () => console.log(`App ist listening on http://localhost:${PORT}`))
