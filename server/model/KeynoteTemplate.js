@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { Schema, model } = mongoose.Schema;
+const { Schema, model } = mongoose;
 
 const KeynoteTemplateSchema = new Schema({
     name: String,
@@ -9,5 +9,5 @@ const KeynoteTemplateSchema = new Schema({
 
 const KeynoteTemplate = model('KeynoteTemplate', KeynoteTemplateSchema);
 
-export default KeynoteTemplate;
+module.exports = KeynoteTemplate;
 

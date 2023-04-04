@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const ActionsForm = ({formTypes, isFirstSlide, setIsFirstSlide, neededForms, setNeededForms, handleSubmit, presentationName, setPresentationName}) => {
+const ActionsForm = ({formTypes, isFirstSlide, setIsFirstSlide, neededForms, setNeededForms, handleSubmit, presentationName, setPresentationName, slides, setSlides}) => {
 
   const [newSlideType, setNewSlideType] = useState('')
 
