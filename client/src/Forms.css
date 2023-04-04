@@ -1,0 +1,57 @@
+* {
+  box-sizing: border-box;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slideform {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-content {
+  margin: 20px 0;
+}
+
+.input-w-button button{
+  margin: 0 20px
+}
+
+h2 {
+  text-transform: uppercase;
+  letter-spacing: .2rem;
+}
+
+/* CSS FOR THE ACTIONS FORM 👇 */
+.actions-form {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left:0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.add-slide, .save-keynote {
+  margin: 0 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.add-first-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+/* CSS FOR THE ACTIONS FORM 👆 */

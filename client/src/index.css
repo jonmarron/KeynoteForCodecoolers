@@ -29,18 +29,32 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid #2b2b2b;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #2b2b2b;
+  color: #eeeeee;
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
+select, input {
+  font-family: 'Poppins', sans-serif;
+  border-radius: 8px;
+  border: 1px solid #2b2b2b;
+  background-color: transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-size: 1em;
+  font-weight: 500;
+}
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;

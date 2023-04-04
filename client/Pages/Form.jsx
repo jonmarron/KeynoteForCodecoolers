@@ -1,25 +1,14 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import '../Forms.css'
-import ActionsForm from '../Components/formComps/ActionsForm'
-import FormsCollection from '../Components/formComps/FormsCollection'
+import ActionsForm from '../../Components/formComps/ActionsFormForm'
+import FormsCollection from '../src/Components/formComps/FormsCollection'
 
 const Form = () => {
 
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [presObject, setPresObject] = useState([])
   const [neededForms, setNeededForms] = useState([])
-  const [formTypes, setFormTypes] = useState([])
-  
-  const getFormTypes = async() => {
-    const response = await fetch('http://localhost:8989/api/formtypes');
-    const data = await response.json();
-    setFormTypes(data);
-  }
 
-  useEffect(() => {
-    getFormTypes();
-  }, [])
-  
 
   return (
     <div className="formContainer">
@@ -37,7 +26,6 @@ const Form = () => {
         })
       }
       <ActionsForm
-        formTypes={formTypes}
         isFirstSlide={isFirstSlide}
         setIsFirstSlide={setIsFirstSlide}
         neededForms={neededForms}
