@@ -8,7 +8,7 @@ const TwoColumnsForm = ({slides, setSlides, index}) => {
 
   const handleChange = e => {
     if(slides[index]){
-      console.log('element exists')
+      console.log('element already exists, edit function incoming')
       return
     }
     console.log('element created')
@@ -26,16 +26,16 @@ const TwoColumnsForm = ({slides, setSlides, index}) => {
   }
   return (
     <div className="slideform" id={index}>
-      <h2>Two Columns with Text</h2>
+      <h2>Two Columns with image and text</h2>
       <div className="slide-content two-columns-form">
         <div className="column">
-          <input type="text" name="" id="" placeholder='Add your image URL here' value={imgURL1} onChange={e => {setImgURL1(e.target.value)}}/>
-          <textarea name="" id="" cols="30" rows="10" placeholder="Add your copy text here ..."  value={copy1Text} onChange={e => {setCopy1Text(e.target.value)}}></textarea>
+          <input type="text" placeholder='Add your image URL here' value={imgURL1} onChange={e => {setImgURL1(e.target.value)}}/>
+          <textarea name="" cols="30" rows="10" placeholder="Add your copy text here ..."  value={copy1Text} onChange={e => {setCopy1Text(e.target.value)}}></textarea>
         </div>
         <div className="column">
-          <input type="text" name="" id="" placeholder='Add your image URL here' value={imgURL2} onChange={e => {setImgURL2(e.target.value)}}/>
+          <input type="text" placeholder='Add your image URL here' value={imgURL2} onChange={e => {setImgURL2(e.target.value)}}/>
           
-          <textarea name="" id="" cols="30" rows="10" placeholder="Add your copy text here ..."   value={copy2Text} onChange={e => {setCopy2Text(e.target.value)}}></textarea>
+          <textarea cols="30" rows="10" placeholder="Add your copy text here ..."   value={copy2Text} onChange={e => {setCopy2Text(e.target.value)}}></textarea>
         </div>
       </div>
       <button onClick={handleChange}>Create</button>

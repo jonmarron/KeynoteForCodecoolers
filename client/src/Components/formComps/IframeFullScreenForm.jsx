@@ -5,7 +5,7 @@ const IframeFullScreenForm = ({slides, setSlides, index}) => {
 
   const handleChange = e => {
     if(slides[index]){
-      console.log('element exists')
+      console.log('element already exists, edit function incoming')
       return
     }
     console.log('element created')
