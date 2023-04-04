@@ -9,6 +9,8 @@ const Form = () => {
   const [presObject, setPresObject] = useState([])
   const [neededForms, setNeededForms] = useState([])
   const [formTypes, setFormTypes] = useState([])
+  const [presentationName, setPresentationName] = useState('')
+  const [slides, setSlides] = useState([])
   
   const getFormTypes = async() => {
     const response = await fetch('http://localhost:8989/api/formtypes');
@@ -19,8 +21,24 @@ const Form = () => {
   useEffect(() => {
     getFormTypes();
   }, [])
-  
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const data = { presentationName, slides }
+      const res = await fetch('http://localhost:8989/api/keynotetemplates', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      const keynoteTemplate = await res.json();
+      console.log(resData);
+    }
+    catch (err) {
+      console.error(err.message);
+    }
+  }
+  
   return (
     <div className="formContainer">
       {
@@ -42,6 +60,11 @@ const Form = () => {
         setIsFirstSlide={setIsFirstSlide}
         neededForms={neededForms}
         setNeededForms={setNeededForms}
+        presentationName={presentationName}
+        setPresentationName={setPresentationName}
+        slides={slides}
+        setSlides={setSlides}
+        handleSubmit={handleSubmit}
       />
     </div>
   )
