@@ -1,7 +1,12 @@
 import React from 'react'
 import '/src/Slides.css'
 
-const TwoColumns = ({ headline, copy1, copy2, imgURL1, imgURL2 }) => {
+const TwoColumns = ({ slide }) => {
+    const headline = slide.headline
+    const copy1 = slide.copy1
+    const copy2 = slide.copy2
+    const imgURL1 = slide.imgURL1
+    const imgURL2 = slide.imgURL2
     return (
         <section className='slide'>
             <h2 className='h2-headline'>{headline}</h2>

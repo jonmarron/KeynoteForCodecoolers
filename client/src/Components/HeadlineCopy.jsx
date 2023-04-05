@@ -1,7 +1,9 @@
 import React from "react"
 import "/src/Slides.css"
 
-const HeadlineCopy = ({ headline, copy1 }) => {
+const HeadlineCopy = ({ slide }) => {
+    const headline = slide.headline
+    const copy1 = slide.copy1
     return (
         <section className="slide">
             <h2 className="h2-headline">{headline}</h2>
