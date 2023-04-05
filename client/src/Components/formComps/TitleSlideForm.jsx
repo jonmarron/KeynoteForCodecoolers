@@ -18,7 +18,6 @@ const TitleSlideForm = ({slides, setSlides, index}) => {
       ]
     )
   }
-  
 
   return (
     <div className="slideform" id={index}>

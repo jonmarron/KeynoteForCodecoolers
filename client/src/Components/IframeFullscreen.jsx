@@ -3,9 +3,9 @@ import "/src/Slides.css"
 
 const IframeFullscreen = ({ iframeURL }) => {
     return (
-        <>
-         <iframe src={iframeURL}></iframe>
-        </>
+         <section className="slide">
+            <iframe src={iframeURL}></iframe>
+         </section>
     )
 }
 

@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import TitleSlide from '../Components/TitleSlide'
 import CopyImage from '../Components/CopyImage'
-import Headlinecopy from '../Components/HeadlineCopy'
+import HeadlineCopy from '../Components/HeadlineCopy'
 import TwoColumns from '../Components/TwoColumns'
 import IframeFullscreen from '../Components/IframeFullscreen'
 import '../Slides.css'
 
 const Slides = () => {
-  const [selectedSlide, setSelectedSlide] = useState(null)
-  const [savedSlides, setSavedSlides] = useState([])
+  const [selectedPresentation, setSelectedPresentation] = useState({slides:[]})
+  const [savedPresentation, setSavedPresentation] = useState([])
+  const [selected, setSelected] = useState(false)
 
   const handleOnChange = (e) => {
-    const selectedIndex = e.target.selectedIndex
-    const selectedSlide = e.target[selectedIndex].text
-    setSelectedSlide(selectedSlide)
+    setSelected(true)
+    const selectedPresentationIndex = e.target.value
+    setSelectedPresentation(savedPresentation[selectedPresentationIndex])
+    console.log(selectedPresentation)
   }
 
   const getSavedSlides = async () => {
@@ -21,37 +23,60 @@ const Slides = () => {
     const data = await response.json()
     console.log("test")
     console.log(data)
-    setSavedSlides(data)
+    setSavedPresentation(data)
   }
 
   useEffect(() => {
     getSavedSlides()
-    console.log(savedSlides)
+    console.log(savedPresentation)
   }, [])
 
-  const renderSlide = () => {
-    switch (selectedSlide) {
-      case savedSlides:
-
-      default:
-        return null
-    }
+  if (!selected) {
+    return (
+      <div>
+        <select className='slideSelector' onChange={handleOnChange}>
+          <option>Select a slide</option>
+          {savedPresentation.map((slide, index) => {
+            return (
+              <option key={index} value={index}>
+                {slide.name}
+              </option>
+            )
+          })}
+        </select>
+      </div>
+    ) 
   }
-
   return (
-    <div>
-      <select className='slideSelector' onChange={handleOnChange}>
-        <option disabled>Select a slide</option>
-        {savedSlides.map((slide, index) => {
-          return (
-            <option key={index} value={slide._id}>
-              {slide.name}
-            </option>
-          )
-        }
-        )}
-      </select>
-      {/* {renderSlide()} */}
+    <div id='test'>
+      {selectedPresentation.slides.map((slide, index) => {
+      console.log(slide.sectionType)
+      if (slide.sectionType === 'title-slide') {
+        return (
+          <TitleSlide key={index} slide={slide} />
+        )
+      }
+      if (slide.sectionType === 'copy+img') {
+        return (
+          <CopyImage key={index} slide={slide} />
+        )
+      }
+      if (slide.sectionType === 'HeadlineCopy') {
+        return (
+          <HeadlineCopy key={index} slide={slide} />
+        )
+      }
+      if (slide.sectionType === '2Columns') {
+        return (
+          <TwoColumns key={index} slide={slide} />
+        )
+      }
+      if (slide.sectionType === 'iframe') {
+        return (
+          <IframeFullscreen key={index} slide={slide} />
+        )
+      }
+    })}
     </div>
   )
 }
