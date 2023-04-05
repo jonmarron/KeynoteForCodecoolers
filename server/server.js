@@ -6,7 +6,7 @@ const cors = require('cors');
 const app = express();
 const fs = require('fs');
 
-mongoose.connect("mongodb+srv://marianniedermayr:qe7SEeteVfH5wu0z@cluster0.ijxxe0y.mongodb.net/test?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://jonmarron:mmKJucyyCBjcSNsl@cluster0.tfvjd7h.mongodb.net/test?retryWrites=true&w=majority");
 
 app.use(cors( { origin: "http://localhost:5173" } ));
 app.use(express.json());
