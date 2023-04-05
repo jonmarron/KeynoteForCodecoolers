@@ -31,16 +31,8 @@ const Slides = () => {
 
   const renderSlide = () => {
     switch (selectedSlide) {
-      case 'Title Slide':
-        return <TitleSlide />
-      case 'Copy Image':
-        return <CopyImage />
-      case 'Headline Copy':
-        return <Headlinecopy />
-      case 'Two Columns':
-        return <TwoColumns />
-      case 'Iframe Fullscreen':
-        return <IframeFullscreen />
+      case savedSlides:
+
       default:
         return null
     }
@@ -50,13 +42,16 @@ const Slides = () => {
     <div>
       <select className='slideSelector' onChange={handleOnChange}>
         <option disabled>Select a slide</option>
-        <option >Title Slide</option>
-        <option >Copy Image</option>
-        <option >Headline Copy</option>
-        <option >Two Columns</option>
-        <option >Iframe Fullscreen</option>
+        {savedSlides.map((slide, index) => {
+          return (
+            <option key={index} value={slide._id}>
+              {slide.name}
+            </option>
+          )
+        }
+        )}
       </select>
-      {renderSlide()}
+      {/* {renderSlide()} */}
     </div>
   )
 }
