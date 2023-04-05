@@ -31,6 +31,11 @@ const Slides = () => {
     console.log(savedPresentation)
   }, [])
 
+  const handleOnClick = (e) => {
+    e.preventDefault()
+    setSelected(false)
+  }
+
   if (!selected) {
     return (
       <div>
@@ -48,7 +53,8 @@ const Slides = () => {
     ) 
   }
   return (
-    <>
+    <div>
+      <button id="close-presentation" onClick={handleOnClick}>x</button>
       {selectedPresentation.slides.map((slide, index) => {
       console.log(slide.sectionType)
       if (slide.sectionType === 'title-slide') {
@@ -76,8 +82,8 @@ const Slides = () => {
           <IframeFullscreen key={index} slide={slide} />
         )
       }
-    })}
-    </>
+      })}
+    </div>
   )
 }
 

@@ -8,11 +8,10 @@ body {
     /* overflow: hidden; */
 }
 
-.slideSelector {
+/* .slideSelector {
     position: absolute;
-    top: 90px;
-    right: 30px;
-}
+    align-self: center;
+} */
 
 .h1-headline {
     font-size: 5rem;
@@ -99,4 +98,17 @@ body {
 .slide:nth-child(odd) {
     background-color: #2b2b2b;
     color: #eeeeee;
+}
+
+#close-presentation {
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99999;
+    font-family: sans-serif;
+    font-size: 2rem;
+    padding: 10px;
+    color: #000000;
+    border: none;
+    background-color: transparent;
 }
