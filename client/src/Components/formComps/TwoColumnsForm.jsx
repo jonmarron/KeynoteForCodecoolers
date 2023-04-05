@@ -1,16 +1,28 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 
 const TwoColumnsForm = ({slides, setSlides, index}) => {
   const [copy1Text, setCopy1Text] = useState('')
   const [imgURL1, setImgURL1] = useState('')
   const [copy2Text, setCopy2Text] = useState('')
   const [imgURL2, setImgURL2] = useState('')
+  const [created, setCreated] = useState(false);
+
+  useEffect(() => {
+    if(slides[index]){
+      setCreated(true);
+      setCopy1Text(slides[index].copy1)
+      setImgURL1(slides[index].imgURL1)
+      setCopy2Text(slides[index].copy2)
+      setImgURL2(slides[index].imgURL2)
+    } 
+  }, [])
 
   const handleChange = e => {
     if(slides[index]){
       console.log('element already exists, edit function incoming')
       return
     }
+    setCreated(true);
     console.log('element created')
     setSlides([
         ... slides,
@@ -38,8 +50,14 @@ const TwoColumnsForm = ({slides, setSlides, index}) => {
           <textarea cols="30" rows="10" placeholder="Add your copy text here ..."   value={copy2Text} onChange={e => {setCopy2Text(e.target.value)}}></textarea>
         </div>
       </div>
-      <button onClick={handleChange}>Create</button>
-
+      {created?(
+        <>
+          <button className='created'>Created</button>
+          <p><em>(edit feature coming soon)</em></p>
+        </>
+      ):(
+        <button onClick={handleChange}>Create</button>
+      )}
     </div>
   )
 }
