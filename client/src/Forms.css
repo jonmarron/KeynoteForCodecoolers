@@ -70,3 +70,8 @@ h2 {
 
 }
 /* CSS FOR THE ACTIONS FORM 👆 */
+
+.created {
+  border-color: green;
+  background-color: green;
+}

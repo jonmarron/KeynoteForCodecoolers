@@ -58,6 +58,7 @@ const Slides = () => {
       {selectedPresentation.slides.map((slide, index) => {
       console.log(slide.sectionType)
       if (slide.sectionType === 'title-slide') {
+        console.log(slide)
         return (
           <TitleSlide key={index} slide={slide} />
         )
