@@ -48,7 +48,7 @@ const Slides = () => {
     ) 
   }
   return (
-    <div id='test'>
+    <div>
       {selectedPresentation.slides.map((slide, index) => {
       console.log(slide.sectionType)
       if (slide.sectionType === 'title-slide') {
