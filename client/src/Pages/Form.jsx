@@ -50,8 +50,7 @@ const Form = () => {
         neededForms.map((form, index) => {
           if (index === neededForms.length -1) {
             return (
-              <div ref={bottomRef} key={index}
-              >
+              <div ref={bottomRef} key={index}>
                 <FormsCollection
                   key={index}
                   index={index}
@@ -62,7 +61,6 @@ const Form = () => {
                   slides={slides}
                   setSlides={setSlides}
                 />
-  
               </div>
             )
           }
