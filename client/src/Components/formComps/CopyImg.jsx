@@ -6,14 +6,14 @@ const CopyImg = ({slides, setSlides, index}) => {
 
   const handleChange = e => {
     if(slides[index]){
-      console.log('element exists')
+      console.log('element already exists, edit function incoming')
       return
     }
     console.log('element created')
     setSlides([
         ... slides,
         {
-          sectionType: 'title-slide',
+          sectionType: 'copy+img',
           copy1: copyText,
           imgURL1: imgURL
         }
@@ -21,13 +21,12 @@ const CopyImg = ({slides, setSlides, index}) => {
     )
   }
   
-
   return (
     <div className="slideform" id={index}>
       <h2>Copy + Img</h2>
       <div className="slide-content two-columns-form">
-        <textarea name="" id="" cols="30" rows="10" placeholder='Add your copy text here ...' value={copyText} onChange={e => {setCopyText(e.target.value)}}></textarea>
-        <input type="text" name="imgURL" id="" placeholder='Add your image URL here' value={imgURL} onChange={e => {setImgURL(e.target.value)}}/>
+        <textarea cols="30" rows="10" placeholder='Add your copy text here ...' value={copyText} onChange={e => {setCopyText(e.target.value)}}></textarea>
+        <input type="text" name="imgURL" placeholder='Add your image URL here' value={imgURL} onChange={e => {setImgURL(e.target.value)}}/>
       </div>
       <button onClick={handleChange}>Create</button>
     </div>  )

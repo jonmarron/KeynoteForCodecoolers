@@ -10,17 +10,15 @@ const ActionsForm = ({formTypes, isFirstSlide, setIsFirstSlide, neededForms, set
 
   const handleNewSlide = (e) =>  {
     e.preventDefault();
-    console.log(neededForms)
     setNeededForms([
       ...neededForms,
       {
-        type:newSlideType
+        type: newSlideType
       }
     ])
     setIsFirstSlide(false);
   }
 
-  
   return (
     <div className="actions-form">
       {isFirstSlide? (

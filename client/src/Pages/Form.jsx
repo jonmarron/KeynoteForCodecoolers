@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import '../Forms.css'
 import ActionsForm from '../Components/formComps/ActionsForm'
 import FormsCollection from '../Components/formComps/FormsCollection'
 
 const Form = () => {
+  const bottomRef = useRef(null);
 
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [presObject, setPresObject] = useState([])
@@ -22,8 +23,13 @@ const Form = () => {
     getFormTypes();
   }, [])
 
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({behavior: 'smooth'});
+  }, [neededForms])
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(slides);
     try {
       const data = { presentationName, slides }
       const res = await fetch('http://localhost:8989/api/keynotetemplates', {
@@ -42,17 +48,35 @@ const Form = () => {
     <div className="formContainer">
       {
         neededForms.map((form, index) => {
+          if (index === neededForms.length -1) {
+            return (
+              <div ref={bottomRef} key={index}
+              >
+                <FormsCollection
+                  key={index}
+                  index={index}
+                  formType={form.type}
+                  presObject={presObject} 
+                  setPresObject={setPresObject}
+                  isFirstSlide={isFirstSlide}
+                  slides={slides}
+                  setSlides={setSlides}
+                />
+  
+              </div>
+            )
+          }
           return (
-            <FormsCollection
-              key={index}
-              index={index}
-              formType={form.type}
-              presObject={presObject} 
-              setPresObject={setPresObject}
-              isFirstSlide={isFirstSlide}
-              slides={slides}
-              setSlides={setSlides}
-            />
+              <FormsCollection
+                key={index}
+                index={index}
+                formType={form.type}
+                presObject={presObject} 
+                setPresObject={setPresObject}
+                isFirstSlide={isFirstSlide}
+                slides={slides}
+                setSlides={setSlides}
+              />
           )
         })
       }

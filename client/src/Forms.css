@@ -26,6 +26,13 @@
   align-items: flex-start;;
 }
 
+.column {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
 .input-w-button button{
   margin: 0 20px
 }
