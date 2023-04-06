@@ -11,6 +11,9 @@ import {formTypes} from '../Constants/FormsTypes'
 console.log(formTypes)
 import '../Slides.css'
 const Slides = () => {
+
+  const bottomRef = useRef(null);
+
   const [selectedPresentation, setSelectedPresentation] = useState([])
   const [presName, setPresName] = useState('')
   const [savedPresentation, setSavedPresentation] = useState([])
@@ -33,6 +36,11 @@ const Slides = () => {
     setPresName(savedPresentation[selectedPresentationIndex].name)
     setSelectedPresentation(savedPresentation[selectedPresentationIndex].slides)
   }
+
+  useEffect(() => {
+    console.log(bottomRef)
+    bottomRef.current?.scrollIntoView({behavior: 'smooth'});
+  }, [selectedPresentation])
 
   const getSavedSlides = async () => {
     const response = await fetch('http://0.0.0.0:8989/api/keynotetemplates')
@@ -75,6 +83,20 @@ const Slides = () => {
       <div className="formContainer">
         {
         selectedPresentation.map((slide, index) => {
+          if (index === selectedPresentation.length -1) {
+            return (
+              <div ref={bottomRef} key={index}>
+                <FormsCollection
+                  key={index}
+                  index={index}
+                  isFirstSlide={false}
+                  formType={slide.sectionType}
+                  slides={selectedPresentation}
+                  setSlides={setSelectedPresentation}
+                />
+              </div>
+            )
+          }
           return (
               <FormsCollection
                 key={index}
@@ -83,10 +105,10 @@ const Slides = () => {
                 formType={slide.sectionType}
                 slides={selectedPresentation}
                 setSlides={setSelectedPresentation}
-                />
-                )
-              })
-            }
+              />
+          )
+          })
+        }
         <EditActionsForm
           formTypes={formTypes}
           slides={selectedPresentation}

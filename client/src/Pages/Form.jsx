@@ -24,8 +24,9 @@ const Form = () => {
   }, [])
 
   useEffect(() => {
+    console.log(bottomRef)
     bottomRef.current?.scrollIntoView({behavior: 'smooth'});
-  }, [neededForms])
+  }, [slides])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -70,7 +71,7 @@ const Form = () => {
               <FormsCollection
                 key={index}
                 index={index}
-                formType={form.type}
+                formType={form.sectionType}
                 presObject={presObject} 
                 setPresObject={setPresObject}
                 isFirstSlide={isFirstSlide}
