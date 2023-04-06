@@ -6,7 +6,10 @@ import TwoColumns from '../Components/TwoColumns'
 import IframeFullscreen from '../Components/IframeFullscreen'
 import FormsCollection from '../Components/formComps/FormsCollection'
 import EditActionsForm from '../Components/EditActionsForm'
+import TwoImages from '../Components/TwoImages'
 import {formTypes} from '../Constants/FormsTypes'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faXmark} from '@fortawesome/free-solid-svg-icons'
 
 console.log(formTypes)
 import '../Slides.css'
@@ -130,8 +133,10 @@ const Slides = () => {
   }
   if (selected && !isEdit) {
     return (
-      <div>
-        <button id="close-presentation" onClick={handleOnClick}>x</button>
+      <div className='slides-container'>
+        <button id="close-presentation" onClick={handleOnClick}>
+          <FontAwesomeIcon icon={faXmark} />
+        </button>
         {selectedPresentation.map((slide, index) => {
         console.log(slide.sectionType)
         if (slide.sectionType === 'title-slide') {
@@ -163,6 +168,11 @@ const Slides = () => {
         if (slide.sectionType === 'image') {
           return (
             <ImgFullScreen key={index} slide={slide} />
+          )
+        }
+        if (slide.sectionType === 'two-images') {
+          return (
+            <TwoImages key={index} slide={slide} />
           )
         }
         })}

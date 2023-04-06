@@ -1,7 +1,4 @@
 #root {
-  /* max-width: 1280px;
-  margin: 0 auto;
-  text-align: center; */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -36,4 +33,16 @@ nav ul li {
 nav ul li:hover {
   border-bottom: 2px solid #591686;
   color: #591686;
+}
+
+#copyright {
+  position: fixed;
+  bottom: 5px;
+  right: 20px;
+  z-index: 9998;
+  font-size: .8rem;
+}
+
+#copyright a {
+  color: rgb(19, 19, 180);
 }

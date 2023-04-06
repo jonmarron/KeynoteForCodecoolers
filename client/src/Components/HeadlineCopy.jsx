@@ -4,10 +4,16 @@ import "/src/Slides.css"
 const HeadlineCopy = ({ slide }) => {
     const headline = slide.headline
     const copy1 = slide.copy1
+    const bullets = copy1.split(',');
     return (
         <section className="slide">
             <h2 className="h2-headline">{headline}</h2>
-            <p className='headline-copy-p'>{copy1}</p>
+            <ul className="slideList">
+                {bullets.map(bullet => {
+                    return (<li>{bullet}</li>);
+                })}
+
+            </ul>
         </section>
 
     )
