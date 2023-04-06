@@ -20,13 +20,10 @@ app.get('/api/formtypes', (req, res) => {
 })
 
 app.post('/api/keynotetemplates', (req, res) => {
-  console.log('hi')
   try {
     const name = req.body.presentationName;
     const date = new Date();
     const slides = req.body.slides;
-    console.log(slides);
-    console.log(name);
     const keynoteTemplate = new KeynoteTemplate({
       name,
       date,
@@ -43,7 +40,6 @@ app.post('/api/keynotetemplates', (req, res) => {
 app.get('/api/keynotetemplates',async (req, res) => {
   try {
     const keynoteTemplates = await KeynoteTemplate.find({});
-    console.log(keynoteTemplates);
     res.status(200).json(keynoteTemplates);
   }
   catch (err) {
@@ -52,9 +48,12 @@ app.get('/api/keynotetemplates',async (req, res) => {
 })
 
 app.put('/api/keynotetemplates/:id', async (req, res) => {
+  console.log(req.body);
+  console.log(req.params.id);
+
   try {
     const keynoteTemplate = await KeynoteTemplate.findById(req.params.id);
-    keynoteTemplate.slides = req.body.slides;
+    keynoteTemplate.slides = req.body;
     keynoteTemplate.save();
     res.status(200).json(keynoteTemplate);
   }
