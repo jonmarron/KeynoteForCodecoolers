@@ -1,3 +1,4 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 const KeynoteTemplate = require('./model/KeynoteTemplate.js');
 
@@ -6,13 +7,12 @@ const cors = require('cors');
 const app = express();
 const fs = require('fs');
 
-// mongoose.connect("mongodb+srv://jonmarron:mmKJucyyCBjcSNsl@cluster0.tfvjd7h.mongodb.net/test?retryWrites=true&w=majority");
-mongoose.connect("mongodb+srv://marianniedermayr:qe7SEeteVfH5wu0z@cluster0.ijxxe0y.mongodb.net/test?retryWrites=true&w=majority");
-
-app.use(cors( { origin: "http://localhost:5173" } ));
+app.use(cors( { origin: "http://localhost:5175" } ));
 app.use(express.json());
 
-const PORT = 8989;
+const {MONGO_URL, PORT = 8989} = process.env;
+
+mongoose.connect(MONGO_URL);
 
 app.get('/api/formtypes', (req, res) => {
   const types = JSON.parse(fs.readFileSync('./FormsTypes.json', 'utf-8'));
@@ -20,6 +20,7 @@ app.get('/api/formtypes', (req, res) => {
 })
 
 app.post('/api/keynotetemplates', (req, res) => {
+  console.log('hi')
   try {
     const name = req.body.presentationName;
     const date = new Date();
@@ -50,4 +51,4 @@ app.get('/api/keynotetemplates',async (req, res) => {
   }
 })
 
-app.listen(PORT, () => console.log(`App ist listening on http://localhost:${PORT}`))
+app.listen(PORT, '0.0.0.0', () => console.log(`App ist listening on http://0.0.0.0:${PORT}`))
