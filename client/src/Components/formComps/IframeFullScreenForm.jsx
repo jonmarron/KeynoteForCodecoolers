@@ -5,29 +5,30 @@ const IframeFullScreenForm = ({slides, setSlides, index}) => {
   const [created, setCreated] = useState(false);
 
   useEffect(() => {
-    if(slides[index]){
+    if(slides[index].iframeURL){
       setCreated(true);
       setIFrameURL(slides[index].iframeURL)
     } 
   }, [])
 
   const handleChange = e => {
-    if(slides[index]){
+    if(slides[index].iframeURL){
       console.log('element already exists, edit function incoming')
       return
     }
     
     setCreated(true);
 
+    const tempSlides = slides;
+
+    slides[index] = {
+      ...slides[index],
+      iframeURL: iFrameURL
+    }
+    
+    setSlides(tempSlides)
     console.log('element created')
-    setSlides([
-        ... slides,
-        {
-          sectionType: 'iframe',
-          iframeURL: iFrameURL
-        }
-      ]
-    )
+
   }
 
   return (

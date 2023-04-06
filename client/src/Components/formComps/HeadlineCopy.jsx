@@ -6,7 +6,7 @@ const HeadlineCopy = ({slides, setSlides, index}) => {
   const [created, setCreated] = useState(false);
 
   useEffect(() => {
-    if(slides[index]){
+    if(slides[index].headline || slides[index].copy1){
       setCreated(true);
       setCopyText(slides[index].copy1)
       setHeadlineText(slides[index].headline)
@@ -15,7 +15,7 @@ const HeadlineCopy = ({slides, setSlides, index}) => {
 
   const handleChange = e => {
     
-    if(slides[index]){
+    if(slides[index].headline || slides[index].copy1){
       console.log('element already exists, edit function incoming')
       return
     }
@@ -23,15 +23,16 @@ const HeadlineCopy = ({slides, setSlides, index}) => {
 
     console.log('element created')
     
-    setSlides([
-        ... slides,
-        {
-          sectionType: 'HeadlineCopy',
-          headline: headlineText,
-          copy1: copyText
-        }
-      ]
-    )
+    const tempSlides = slides;
+
+    slides[index] = {
+      ...slides[index],
+      headline: headlineText,
+      copy1: copyText
+    }
+    
+    setSlides(tempSlides)
+   
   }
 
   return (

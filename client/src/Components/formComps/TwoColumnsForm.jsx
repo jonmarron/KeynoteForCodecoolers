@@ -8,7 +8,7 @@ const TwoColumnsForm = ({slides, setSlides, index}) => {
   const [created, setCreated] = useState(false);
 
   useEffect(() => {
-    if(slides[index]){
+    if(slides[index].copy1 || slides[index].copy2 || slides[index].imgURL1 || slides[index].imgURL){
       setCreated(true);
       setCopy1Text(slides[index].copy1)
       setImgURL1(slides[index].imgURL1)
@@ -18,24 +18,27 @@ const TwoColumnsForm = ({slides, setSlides, index}) => {
   }, [])
 
   const handleChange = e => {
-    if(slides[index]){
+    if(slides[index].copy1 || slides[index].copy2 || slides[index].imgURL1 || slides[index].imgURL){
       console.log('element already exists, edit function incoming')
       return
     }
     setCreated(true);
     console.log('element created')
-    setSlides([
-        ... slides,
-        {
-          sectionType: '2Columns',
-          copy1: copy1Text,
-          imgURL1: imgURL1,
-          copy2: copy2Text,
-          imgURL2: imgURL2
-        }
-      ]
-    )
+
+    const tempSlides = slides;
+
+    slides[index] = {
+      ...slides[index],
+      copy1: copy1Text,
+      imgURL1: imgURL1,
+      copy2: copy2Text,
+      imgURL2: imgURL2
+
+    }
+
+    setSlides(tempSlides);
   }
+  
   return (
     <div className="slideform" id={index}>
       <h2>Two Columns with image and text</h2>

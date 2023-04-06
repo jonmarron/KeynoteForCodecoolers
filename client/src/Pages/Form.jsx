@@ -42,19 +42,21 @@ const Form = () => {
     catch (err) {
       console.error(err.message);
     }
+    setSlides([]);
+    setIsFirstSlide(true);
   }
   
   return (
     <div className="formContainer">
       {
-        neededForms.map((form, index) => {
-          if (index === neededForms.length -1) {
+        slides.map((form, index) => {
+          if (index === slides.length -1) {
             return (
               <div ref={bottomRef} key={index}>
                 <FormsCollection
                   key={index}
                   index={index}
-                  formType={form.type}
+                  formType={form.sectionType}
                   presObject={presObject} 
                   setPresObject={setPresObject}
                   isFirstSlide={isFirstSlide}
