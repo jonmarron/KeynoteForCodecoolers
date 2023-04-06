@@ -8,7 +8,7 @@ const TwoColumnsForm = ({slides, setSlides, index}) => {
   const [created, setCreated] = useState(false);
 
   useEffect(() => {
-    if(slides[index]){
+    if(slides[index].copy1 || slides[index].copy2 || slides[index].imgURL1 || slides[index].imgURL){
       setCreated(true);
       setCopy1Text(slides[index].copy1)
       setImgURL1(slides[index].imgURL1)
@@ -18,7 +18,7 @@ const TwoColumnsForm = ({slides, setSlides, index}) => {
   }, [])
 
   const handleChange = e => {
-    if(slides[index]){
+    if(slides[index].copy1 || slides[index].copy2 || slides[index].imgURL1 || slides[index].imgURL){
       console.log('element already exists, edit function incoming')
       return
     }

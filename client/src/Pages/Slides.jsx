@@ -1,25 +1,40 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import TitleSlide from '../Components/TitleSlide'
 import CopyImage from '../Components/CopyImage'
 import HeadlineCopy from '../Components/HeadlineCopy'
 import TwoColumns from '../Components/TwoColumns'
 import IframeFullscreen from '../Components/IframeFullscreen'
-import '../Slides.css'
+import FormsCollection from '../Components/formComps/FormsCollection'
+import EditActionsForm from '../Components/EditActionsForm'
+import {formTypes} from '../Constants/FormsTypes'
 
+console.log(formTypes)
+import '../Slides.css'
 const Slides = () => {
-  const [selectedPresentation, setSelectedPresentation] = useState({slides:[]})
+  const [selectedPresentation, setSelectedPresentation] = useState([])
+  const [toEditPresentation, setToEditPresentation] = useState([])
+  const [presName, setPresName] =useState('')
   const [savedPresentation, setSavedPresentation] = useState([])
   const [selected, setSelected] = useState(false)
+  const [isEdit, setIsEdit] = useState(false)
+  const select = useRef(null);
 
   const handleOnChange = (e) => {
     setSelected(true)
-    const selectedPresentationIndex = e.target.value
-    setSelectedPresentation(savedPresentation[selectedPresentationIndex])
-    console.log(selectedPresentation)
+    setIsEdit(false)
+    const selectedPresentationIndex = select.current.value
+    setSelectedPresentation(savedPresentation[selectedPresentationIndex].slides)
+  }
+  const handleOnClickEdit = (e) => {
+    setSelected(true)
+    setIsEdit(true);
+    const selectedPresentationIndex = select.current.value
+    setPresName(savedPresentation[selectedPresentationIndex].name)
+    setSelectedPresentation(savedPresentation[selectedPresentationIndex].slides)
   }
 
   const getSavedSlides = async () => {
-    const response = await fetch('http://localhost:8989/api/keynotetemplates')
+    const response = await fetch('http://0.0.0.0:8989/api/keynotetemplates')
     const data = await response.json()
     console.log("test")
     console.log(data)
@@ -36,10 +51,10 @@ const Slides = () => {
     setSelected(false)
   }
 
-  if (!selected) {
+  if (!selected && !isEdit) {
     return (
       <div>
-        <select className='slideSelector' onChange={handleOnChange}>
+        <select className='slideSelector' ref={select}>
           <option>Select a slide</option>
           {savedPresentation.map((slide, index) => {
             return (
@@ -49,43 +64,76 @@ const Slides = () => {
             )
           })}
         </select>
+        <button onClick={handleOnChange}>Show</button>
+        <button onClick={handleOnClickEdit}>Edit</button>
       </div>
     ) 
   }
-  return (
-    <div>
-      <button id="close-presentation" onClick={handleOnClick}>x</button>
-      {selectedPresentation.slides.map((slide, index) => {
-      console.log(slide.sectionType)
-      if (slide.sectionType === 'title-slide') {
-        console.log(slide)
-        return (
-          <TitleSlide key={index} slide={slide} />
-        )
-      }
-      if (slide.sectionType === 'copy+img') {
-        return (
-          <CopyImage key={index} slide={slide} />
-        )
-      }
-      if (slide.sectionType === 'HeadlineCopy') {
-        return (
-          <HeadlineCopy key={index} slide={slide} />
-        )
-      }
-      if (slide.sectionType === '2Columns') {
-        return (
-          <TwoColumns key={index} slide={slide} />
-        )
-      }
-      if (slide.sectionType === 'iframe') {
-        return (
-          <IframeFullscreen key={index} slide={slide} />
-        )
-      }
-      })}
-    </div>
-  )
+  if (selected && isEdit) {
+    return(
+      <div className="formContainer">
+        {
+        selectedPresentation.map((slide, index) => {
+          return (
+              <FormsCollection
+                key={index}
+                index={index}
+                isFirstSlide={false}
+                formType={slide.sectionType}
+                slides={selectedPresentation}
+                setSlides={setSelectedPresentation}
+                />
+                )
+              })
+            }
+        <EditActionsForm
+          formTypes={formTypes}
+          slides={selectedPresentation}
+          setSlides={setSelectedPresentation}
+          presentationName={presName}
+          // handleSubmit={handleSubmit}
+        />
+        </div>
+
+    )
+    
+  }
+  if (selected && !isEdit) {
+    return (
+      <div>
+        <button id="close-presentation" onClick={handleOnClick}>x</button>
+        {selectedPresentation.map((slide, index) => {
+        console.log(slide.sectionType)
+        if (slide.sectionType === 'title-slide') {
+          console.log(slide)
+          return (
+            <TitleSlide key={index} slide={slide} />
+          )
+        }
+        if (slide.sectionType === 'copy+img') {
+          return (
+            <CopyImage key={index} slide={slide} />
+          )
+        }
+        if (slide.sectionType === 'HeadlineCopy') {
+          return (
+            <HeadlineCopy key={index} slide={slide} />
+          )
+        }
+        if (slide.sectionType === '2Columns') {
+          return (
+            <TwoColumns key={index} slide={slide} />
+          )
+        }
+        if (slide.sectionType === 'iframe') {
+          return (
+            <IframeFullscreen key={index} slide={slide} />
+          )
+        }
+        })}
+      </div>
+    )
+  }
 }
 
 export default Slides

@@ -6,6 +6,7 @@ import TwoColumnsForm from './TwoColumnsForm'
 import IframeFullScreenForm from './IframeFullScreenForm'
 
 const FormsCollection = ({formType, presObject, setPresObject, isFirstSlide, slides, setSlides, index}) => {
+  console.log(formType);
   if(!isFirstSlide){
     if (formType === 'title-slide'){
       return (

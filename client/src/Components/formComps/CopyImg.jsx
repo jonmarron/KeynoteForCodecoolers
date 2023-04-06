@@ -6,7 +6,7 @@ const CopyImg = ({slides, setSlides, index}) => {
   const [created, setCreated] = useState(false);
 
   useEffect(() => {
-    if(slides[index]){
+    if(slides[index].copy1 || slides[index].imgURL1){
       setCreated(true);
       setCopyText(slides[index].copy1)
       setImgURL(slides[index].imgURL1)
@@ -15,23 +15,25 @@ const CopyImg = ({slides, setSlides, index}) => {
 
   const handleChange = e => {
     
-    if(slides[index]){
+    if(slides[index].copy1 || slides[index].imgURL1){
       console.log('element already exists, edit function incoming')
       return
     }
-    setCreated(true)
-    ;
+    setCreated(true);
     console.log('element created')
+
+    const tempSlides = slides;
+
+    slides[index] = {
+      ...slides[index],
+      copy1: copyText,
+      imgURL1: imgURL
+
+    }
     
-    setSlides([
-        ... slides,
-        {
-          sectionType: 'copy+img',
-          copy1: copyText,
-          imgURL1: imgURL
-        }
-      ]
-    )
+
+    setSlides(tempSlides)
+   
   }
   
   return (

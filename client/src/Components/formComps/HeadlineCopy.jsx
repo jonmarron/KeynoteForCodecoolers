@@ -6,7 +6,7 @@ const HeadlineCopy = ({slides, setSlides, index}) => {
   const [created, setCreated] = useState(false);
 
   useEffect(() => {
-    if(slides[index]){
+    if(slides[index].headline || slides[index].copy1){
       setCreated(true);
       setCopyText(slides[index].copy1)
       setHeadlineText(slides[index].headline)
@@ -15,7 +15,7 @@ const HeadlineCopy = ({slides, setSlides, index}) => {
 
   const handleChange = e => {
     
-    if(slides[index]){
+    if(slides[index].headline || slides[index].copy1){
       console.log('element already exists, edit function incoming')
       return
     }

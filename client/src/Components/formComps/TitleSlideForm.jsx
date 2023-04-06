@@ -5,7 +5,7 @@ const TitleSlideForm = ({slides, setSlides, index}) => {
   const [created, setCreated] = useState(false);
 
   useEffect(() => {
-    if(slides[index]){
+    if(slides[index].headline){
       console.log(slides[index]);
       setCreated(true);
       setHeadlineText(slides[index].headline)
@@ -14,7 +14,7 @@ const TitleSlideForm = ({slides, setSlides, index}) => {
 
   const handleChange = e => {
 
-    if(slides[index]){
+    if(slides[index].headline){
       console.log('element already exists, edit function incoming')
       return
     }
@@ -23,14 +23,14 @@ const TitleSlideForm = ({slides, setSlides, index}) => {
 
     console.log('element created')
     
-    setSlides([
-        ... slides,
-        {
-          sectionType: 'title-slide',
-          headline: headlineText
-        }
-      ]
-    )
+    const tempSlides = slides;
+
+    slides[index] = {
+      ...slides[index],
+      headline: headlineText
+
+    }
+    setSlides(tempSlides )
   }
 
   return (
