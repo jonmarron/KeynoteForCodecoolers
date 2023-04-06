@@ -10,6 +10,7 @@ import {formTypes} from '../Constants/FormsTypes'
 
 console.log(formTypes)
 import '../Slides.css'
+import ImgFullScreen from '../Components/ImgFullScreen'
 const Slides = () => {
 
   const bottomRef = useRef(null);
@@ -64,7 +65,7 @@ const Slides = () => {
     return (
       <div>
         <select className='slideSelector' ref={select}>
-          <option>Select a slide</option>
+          <option>Select a Presentation</option>
           {savedPresentation.map((slide, index) => {
             return (
               <option key={index} value={index}>
@@ -119,6 +120,8 @@ const Slides = () => {
           setSelected={setSelected}
           isEdit={isEdit}
           setIsEdit={setIsEdit}
+          getSavedSlides={getSavedSlides}
+          setSavedPresentation={setSavedPresentation}
         />
         </div>
 
@@ -155,6 +158,11 @@ const Slides = () => {
         if (slide.sectionType === 'iframe') {
           return (
             <IframeFullscreen key={index} slide={slide} />
+          )
+        }
+        if (slide.sectionType === 'image') {
+          return (
+            <ImgFullScreen key={index} slide={slide} />
           )
         }
         })}

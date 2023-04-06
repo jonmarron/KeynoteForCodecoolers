@@ -1,1 +1,1 @@
-export const formTypes = ["title-slide", "copy+img", "2Columns", "HeadlineCopy", "iframe"]
+export const formTypes = ["title-slide", "copy+img", "2Columns", "HeadlineCopy", "iframe", "image"]

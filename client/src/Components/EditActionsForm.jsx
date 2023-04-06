@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-const EditActionsForm = ({formTypes, slides, setSlides, presentationName, presentationID, selected, setSelected, isEdit, setIsEdit}) => {
+const EditActionsForm = ({formTypes, slides, setSlides, presentationName, presentationID, selected, setSelected, isEdit, setIsEdit, getSavedSlides, setSavedPresentation}) => {
 
   const putSlides = async (slides) => {
     console.log(presentationID);
@@ -31,6 +31,7 @@ const EditActionsForm = ({formTypes, slides, setSlides, presentationName, presen
   }
   const handleSubmit = (e) => {
     putSlides(slides);
+    getSavedSlides(setSavedPresentation);
     setIsEdit(false);
     setSelected(false);
   }

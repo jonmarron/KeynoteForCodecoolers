@@ -2,6 +2,7 @@ import React, {useState, useEffect, useRef} from 'react'
 import '../Forms.css'
 import ActionsForm from '../Components/formComps/ActionsForm'
 import FormsCollection from '../Components/formComps/FormsCollection'
+import {formTypes} from '../Constants/FormsTypes'
 
 const Form = () => {
   const bottomRef = useRef(null);
@@ -9,20 +10,9 @@ const Form = () => {
   const [isFirstSlide, setIsFirstSlide] = useState(true);
   const [presObject, setPresObject] = useState([])
   const [neededForms, setNeededForms] = useState([])
-  const [formTypes, setFormTypes] = useState([])
   const [presentationName, setPresentationName] = useState('')
   const [slides, setSlides] = useState([])
   
-  const getFormTypes = async() => {
-    const response = await fetch('http://0.0.0.0:8989/api/formtypes');
-    const data = await response.json();
-    setFormTypes(data);
-  }
-
-  useEffect(() => {
-    getFormTypes();
-  }, [])
-
   useEffect(() => {
     console.log(bottomRef)
     bottomRef.current?.scrollIntoView({behavior: 'smooth'});

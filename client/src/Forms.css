@@ -51,7 +51,7 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px;
+  padding:0 0 10px 0;
   background-color: #eeeeee30;
   backdrop-filter: blur(5px);
 }

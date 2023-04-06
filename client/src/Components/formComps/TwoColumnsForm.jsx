@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react'
 
 const TwoColumnsForm = ({slides, setSlides, index}) => {
+  const [headlineText, setHeadlineText] = useState('');
   const [copy1Text, setCopy1Text] = useState('')
   const [imgURL1, setImgURL1] = useState('')
   const [copy2Text, setCopy2Text] = useState('')
@@ -8,8 +9,9 @@ const TwoColumnsForm = ({slides, setSlides, index}) => {
   const [created, setCreated] = useState(false);
 
   useEffect(() => {
-    if(slides[index].copy1 || slides[index].copy2 || slides[index].imgURL1 || slides[index].imgURL){
+    if(slides[index].headline || slides[index].copy1 || slides[index].copy2 || slides[index].imgURL1 || slides[index].imgURL){
       setCreated(true);
+      setHeadlineText(slides[index].headline)
       setCopy1Text(slides[index].copy1)
       setImgURL1(slides[index].imgURL1)
       setCopy2Text(slides[index].copy2)
@@ -18,7 +20,7 @@ const TwoColumnsForm = ({slides, setSlides, index}) => {
   }, [])
 
   const handleChange = e => {
-    if(slides[index].copy1 || slides[index].copy2 || slides[index].imgURL1 || slides[index].imgURL){
+    if(slides[index].headline || slides[index].copy1 || slides[index].copy2 || slides[index].imgURL1 || slides[index].imgURL){
       console.log('element already exists, edit function incoming')
       return
     }
@@ -29,6 +31,7 @@ const TwoColumnsForm = ({slides, setSlides, index}) => {
 
     slides[index] = {
       ...slides[index],
+      headline: headlineText,
       copy1: copy1Text,
       imgURL1: imgURL1,
       copy2: copy2Text,
@@ -42,6 +45,7 @@ const TwoColumnsForm = ({slides, setSlides, index}) => {
   return (
     <div className="slideform" id={index}>
       <h2>Two Columns with image and text</h2>
+      <input type="text" name="Title" onChange={e=>{setHeadlineText(e.target.value)}} value={headlineText} placeholder='Write your Headline here ...' />
       <div className="slide-content two-columns-form">
         <div className="column">
           <input type="text" placeholder='Add your image URL here' value={imgURL1} onChange={e => {setImgURL1(e.target.value)}}/>

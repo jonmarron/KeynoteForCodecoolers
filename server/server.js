@@ -5,7 +5,6 @@ const KeynoteTemplate = require('./model/KeynoteTemplate.js');
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const fs = require('fs');
 
 app.use(cors( { origin: "http://localhost:5175" } ));
 app.use(express.json());
@@ -13,11 +12,6 @@ app.use(express.json());
 const {MONGO_URL, PORT = 8989} = process.env;
 
 mongoose.connect(MONGO_URL);
-
-app.get('/api/formtypes', (req, res) => {
-  const types = JSON.parse(fs.readFileSync('./FormsTypes.json', 'utf-8'));
-  res.json(types);  
-})
 
 app.post('/api/keynotetemplates', (req, res) => {
   try {
