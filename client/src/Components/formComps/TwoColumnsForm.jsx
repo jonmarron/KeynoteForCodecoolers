@@ -24,18 +24,21 @@ const TwoColumnsForm = ({slides, setSlides, index}) => {
     }
     setCreated(true);
     console.log('element created')
-    setSlides([
-        ... slides,
-        {
-          sectionType: '2Columns',
-          copy1: copy1Text,
-          imgURL1: imgURL1,
-          copy2: copy2Text,
-          imgURL2: imgURL2
-        }
-      ]
-    )
+
+    const tempSlides = slides;
+
+    slides[index] = {
+      ...slides[index],
+      copy1: copy1Text,
+      imgURL1: imgURL1,
+      copy2: copy2Text,
+      imgURL2: imgURL2
+
+    }
+
+    setSlides(tempSlides);
   }
+  
   return (
     <div className="slideform" id={index}>
       <h2>Two Columns with image and text</h2>

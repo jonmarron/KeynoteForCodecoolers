@@ -23,15 +23,16 @@ const HeadlineCopy = ({slides, setSlides, index}) => {
 
     console.log('element created')
     
-    setSlides([
-        ... slides,
-        {
-          sectionType: 'HeadlineCopy',
-          headline: headlineText,
-          copy1: copyText
-        }
-      ]
-    )
+    const tempSlides = slides;
+
+    slides[index] = {
+      ...slides[index],
+      headline: headlineText,
+      copy1: copyText
+    }
+    
+    setSlides(tempSlides)
+   
   }
 
   return (

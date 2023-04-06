@@ -19,15 +19,16 @@ const IframeFullScreenForm = ({slides, setSlides, index}) => {
     
     setCreated(true);
 
+    const tempSlides = slides;
+
+    slides[index] = {
+      ...slides[index],
+      iframeURL: iFrameURL
+    }
+    
+    setSlides(tempSlides)
     console.log('element created')
-    setSlides([
-        ... slides,
-        {
-          sectionType: 'iframe',
-          iframeURL: iFrameURL
-        }
-      ]
-    )
+
   }
 
   return (

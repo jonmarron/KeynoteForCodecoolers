@@ -1,6 +1,18 @@
 import React, {useState} from 'react'
 
-const ActionsForm = ({formTypes, slides, setSlides, presentationName}) => {
+const EditActionsForm = ({formTypes, slides, setSlides, presentationName, presentationID, selected, setSelected, isEdit, setIsEdit}) => {
+
+  const putSlides = async (slides) => {
+    console.log(presentationID);
+    const result = await fetch(`http://0.0.0.0:8989/api/keynotetemplates/${presentationID}`, {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(slides)
+    })
+    const data = await result.json();
+  }
 
   const [newSlideType, setNewSlideType] = useState('')
 
@@ -18,8 +30,9 @@ const ActionsForm = ({formTypes, slides, setSlides, presentationName}) => {
     ])
   }
   const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(slides)
+    putSlides(slides);
+    setIsEdit(false);
+    setSelected(false);
   }
 
   return (
@@ -49,4 +62,4 @@ const ActionsForm = ({formTypes, slides, setSlides, presentationName}) => {
   )
 }
 
-export default ActionsForm
+export default EditActionsForm

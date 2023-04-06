@@ -12,9 +12,9 @@ console.log(formTypes)
 import '../Slides.css'
 const Slides = () => {
   const [selectedPresentation, setSelectedPresentation] = useState([])
-  const [toEditPresentation, setToEditPresentation] = useState([])
-  const [presName, setPresName] =useState('')
+  const [presName, setPresName] = useState('')
   const [savedPresentation, setSavedPresentation] = useState([])
+  const [presentationID, setPresentationID] = useState('')
   const [selected, setSelected] = useState(false)
   const [isEdit, setIsEdit] = useState(false)
   const select = useRef(null);
@@ -29,6 +29,7 @@ const Slides = () => {
     setSelected(true)
     setIsEdit(true);
     const selectedPresentationIndex = select.current.value
+    setPresentationID(savedPresentation[selectedPresentationIndex]._id)
     setPresName(savedPresentation[selectedPresentationIndex].name)
     setSelectedPresentation(savedPresentation[selectedPresentationIndex].slides)
   }
@@ -91,7 +92,11 @@ const Slides = () => {
           slides={selectedPresentation}
           setSlides={setSelectedPresentation}
           presentationName={presName}
-          // handleSubmit={handleSubmit}
+          presentationID={presentationID}
+          selected={selected}
+          setSelected={setSelected}
+          isEdit={isEdit}
+          setIsEdit={setIsEdit}
         />
         </div>
 
