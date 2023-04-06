@@ -19,7 +19,7 @@ const Slides = () => {
   }
 
   const getSavedSlides = async () => {
-    const response = await fetch('http://localhost:8989/api/keynotetemplates')
+    const response = await fetch('http://0.0.0.0:8989/api/keynotetemplates')
     const data = await response.json()
     console.log("test")
     console.log(data)

@@ -14,7 +14,7 @@ const Form = () => {
   const [slides, setSlides] = useState([])
   
   const getFormTypes = async() => {
-    const response = await fetch('http://localhost:8989/api/formtypes');
+    const response = await fetch('http://0.0.0.0:8989/api/formtypes');
     const data = await response.json();
     setFormTypes(data);
   }
@@ -32,7 +32,7 @@ const Form = () => {
     console.log(slides);
     try {
       const data = { presentationName, slides }
-      const res = await fetch('http://localhost:8989/api/keynotetemplates', {
+      const res = await fetch('http://0.0.0.0:8989/api/keynotetemplates', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

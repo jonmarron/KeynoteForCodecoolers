@@ -51,4 +51,16 @@ app.get('/api/keynotetemplates',async (req, res) => {
   }
 })
 
+app.put('/api/keynotetemplates/:id', async (req, res) => {
+  try {
+    const keynoteTemplate = await KeynoteTemplate.findById(req.params.id);
+    keynoteTemplate.slides = req.body.slides;
+    keynoteTemplate.save();
+    res.status(200).json(keynoteTemplate);
+  }
+  catch (err) {
+    console.log(err);
+  }
+})
+
 app.listen(PORT, '0.0.0.0', () => console.log(`App ist listening on http://0.0.0.0:${PORT}`))
