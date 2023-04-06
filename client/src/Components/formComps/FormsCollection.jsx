@@ -5,6 +5,7 @@ import HeadlineCopy from './HeadlineCopy'
 import TwoColumnsForm from './TwoColumnsForm'
 import IframeFullScreenForm from './IframeFullScreenForm'
 import ImgFullScreenForm from './ImgFullScreenForm'
+import TwoImgsForm from './TwoImgsForm'
 
 const FormsCollection = ({formType, presObject, setPresObject, isFirstSlide, slides, setSlides, index}) => {
   console.log(formType);
@@ -57,6 +58,15 @@ const FormsCollection = ({formType, presObject, setPresObject, isFirstSlide, sli
     if (formType === 'image'){
       return (
         <ImgFullScreenForm
+          index={index}
+          slides={slides}
+          setSlides={setSlides}
+        />
+      )
+    }
+    if (formType === 'two-images'){
+      return (
+        <TwoImgsForm
           index={index}
           slides={slides}
           setSlides={setSlides}
