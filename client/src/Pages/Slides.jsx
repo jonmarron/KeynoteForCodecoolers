@@ -142,37 +142,37 @@ const Slides = () => {
         if (slide.sectionType === 'title-slide') {
           console.log(slide)
           return (
-            <TitleSlide key={index} slide={slide} />
+            <TitleSlide key={index} slide={slide} id={index}/>
           )
         }
         if (slide.sectionType === 'copy+img') {
           return (
-            <CopyImage key={index} slide={slide} />
+            <CopyImage key={index} slide={slide}  id={index}/>
           )
         }
         if (slide.sectionType === 'HeadlineCopy') {
           return (
-            <HeadlineCopy key={index} slide={slide} />
+            <HeadlineCopy key={index} slide={slide}  id={index}/>
           )
         }
         if (slide.sectionType === '2Columns') {
           return (
-            <TwoColumns key={index} slide={slide} />
+            <TwoColumns key={index} slide={slide}  id={index}/>
           )
         }
         if (slide.sectionType === 'iframe') {
           return (
-            <IframeFullscreen key={index} slide={slide} />
+            <IframeFullscreen key={index} slide={slide}  id={index}/>
           )
         }
         if (slide.sectionType === 'image') {
           return (
-            <ImgFullScreen key={index} slide={slide} />
+            <ImgFullScreen key={index} slide={slide}  id={index}/>
           )
         }
         if (slide.sectionType === 'two-images') {
           return (
-            <TwoImages key={index} slide={slide} />
+            <TwoImages key={index} slide={slide}  id={index}/>
           )
         }
         })}

@@ -15,7 +15,7 @@ function App() {
 
       <div className="navBar">
         <div className="logo">
-          <h2>KeynoteTemplate</h2>
+          <h2>Keynote Template</h2>
         </div>
         <nav>
           <ul>

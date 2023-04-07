@@ -1,13 +1,13 @@
 import React from 'react'
 import '/src/Slides.css'
 
-const TwoImages = ({ slide }) => {
+const TwoImages = ({ slide, id }) => {
     const headline = slide.headline
     const imgURL1 = slide.imgURL1
     const imgURL2 = slide.imgURL2
 
     return (
-        <section className='slide'>
+        <section className='slide' id={id}>
             <h2 className='h2-headline'>{headline}</h2>
             <div className='two-image'>
                 <img src={imgURL1} alt='image' />

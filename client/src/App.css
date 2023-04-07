@@ -46,3 +46,19 @@ nav ul li:hover {
 #copyright a {
   color: rgb(19, 19, 180);
 }
+
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+  background: rgba(238, 238, 238, 0.1254901961);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2b2b2b;
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+  background: rgba(238, 238, 238, 0.1254901961);
+}
